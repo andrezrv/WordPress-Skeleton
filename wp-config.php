@@ -23,12 +23,7 @@ if ( file_exists( $local_config = dirname( __FILE__ ) . '/local-config.php' ) ) 
     /** Load your local config file */
     include( $local_config );
 
-} elseif ( $staging_config = file_exists( dirname( __FILE__ ) . '/staging-config.php' ) ) {
-    
-    /** Load your staging config file */
-    include( $staging_config );
-
-} elseif ( $production_config = file_exists( dirname( __FILE__ ) . '/production-config.php' ) ) {
+} else { // Load info for your remote stages.
 
 	// ** MySQL settings - By now you should know were to get this from ** //
 	/** The name of the database for WordPress */
@@ -41,10 +36,20 @@ if ( file_exists( $local_config = dirname( __FILE__ ) . '/local-config.php' ) ) 
 	define( 'DB_PASSWORD', '%%DB_PASSWORD%%' );
 
 	/** MySQL hostname */
-	define( 'DB_HOST', '%%DB_HOST%%' ); // Probably 'localhost'   
-    
-    /** Load your production config file */
-    include( $production_config );
+	define( 'DB_HOST', '%%DB_HOST%%' ); // Probably 'localhost'
+
+	/** Load config files for your remote stages. */
+	if ( $staging_config = file_exists( dirname( __FILE__ ) . '/staging-config.php' ) ) {
+	    
+	    /** Load your staging config file */
+	    include( $staging_config );
+
+	} elseif ( $production_config = file_exists( dirname( __FILE__ ) . '/production-config.php' ) ) {
+	    
+	    /** Load your production config file */
+	    include( $production_config );
+
+	}
 
 }
 
