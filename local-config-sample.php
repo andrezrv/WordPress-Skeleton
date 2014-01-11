@@ -1,9 +1,12 @@
 <?php
 /**
- * This is a sample local-config.php file
- * In it, you must include the four main database defines
+ * WordPress configuration file for local environment only.
  * 
- * You may include other settings here that you only want enabled on your local development checkouts
+ * You must include here the four main database defines.
+ *
+ * By default, this file enables debugging, but disables PHP errors. You may
+ * edit or remove those settings, and include here any other settings that you
+ * only want to be enabled on your local environment.
  */
 
 // ** MySQL settings - By now you should know were to get this from ** //

@@ -1,8 +1,11 @@
 <?php
 /**
- * This is a sample staging-config.php file.
- * 
- * You may include here any settings that you only want enabled on your staging environment.
+ * WordPress configuration file for staging environment only.
+ *
+ * By default, this file disables debugging, auto updates and file
+ * modifications through the WordPress admin. You may edit or remove those
+ * settings, and include here any other settings that you only want to be
+ * enabled on your staging environment.
  */
 
 /**
@@ -22,7 +25,7 @@ define( 'WP_DEBUG_DISPLAY', false );
  *
  * Since version 3.7 WordPress automatically updates to new minor versions.
  * This could not be desireable if you are working on your own controlled and
- * often mantained repository. The updating process can be disabled by
+ * regularly mantained repository. The updating process can be disabled by
  * setting to false the value of the WP_AUTO_UPDATE_CORE constant.
  */
 define( 'WP_AUTO_UPDATE_CORE', false );

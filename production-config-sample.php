@@ -1,10 +1,13 @@
 <?php
-/**
- * This is a sample production-config.php file.
- * 
- * You may include here any settings that you only want enabled on your production environment.
+ /**
+ * WordPress configuration file for production environment only.
+ *
+ * By default, this file disables debugging, auto updates and file
+ * modifications through the WordPress admin. You may edit or remove those
+ * settings, and include here any other settings that you only want to be
+ * enabled on your production environment.
  */
-
+ 
 /**
  * Debug settings.
  *
