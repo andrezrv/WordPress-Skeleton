@@ -1,9 +1,0 @@
-[submodule "wordpress"]
-	path = wordpress
-	url = git@github.com:WordPress/WordPress.git
-[submodule "maintenance"]
-	path = maintenance
-	url = git@github.com:andrezrv/simple-maintenance-website.git
-[submodule "tasks"]
-	path = tasks
-	url = git@github.com:andrezrv/common-backup-tasks.git
