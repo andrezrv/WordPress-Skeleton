@@ -1,3 +1,5 @@
+# This is an example .htaccess file. It will only be used if you use Apache as
+# your web server. Feel free to customize it according to your own needs.
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
