@@ -24,14 +24,14 @@ All of these changes will significantly improve your WordPress core update proce
 ##### Cloning
 You must clone this repository recursively, since it includes some folders as Git submodules and you won't get all the files with a default clone. Just run the following command:
 
-```
+```bash
 git clone --recursive git://github.com/andrezrv/wordpress-bareboner.git <my-project> 
 ```
 
 ##### Developing
 If you are working on your own project, you may want to remove the default Git repository and create your own. I recommend to keep the `.gitignore` files, because they may still be useful to you. Here's how you do it:
 
-```
+```bash
 cd <my-project>
 find . -name ".git*" ! -name ".gitignore" -exec rm -f {} \;
 git init
