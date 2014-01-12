@@ -19,6 +19,30 @@ All of these changes will significantly improve your WordPress core update proce
 * You have a symlink called `/background` that points to `/app/maintenance/`.
 * You pointed the root of your host in your NGINX or Apache configuration to `/live`.
 
+### Getting started
+
+##### Cloning
+You must clone this repository recursively, since it includes some folders as Git submodules and you won't get all the files with a default clone. Just run the following command:
+
+```
+git clone --recursive git://github.com/andrezrv/wordpress-bareboner.git <my-project> 
+```
+
+##### Developing
+If you are working on your own project, you may want to remove the default Git repository and create your own. I recommend to keep the `.gitignore` files, because they may still be useful to you. Here's how you do it:
+
+```
+cd <my-project>
+find . -name ".git*" ! -name ".gitignore" -exec rm -f {} \;
+git init
+git remote add origin <git://github.com/user/repo>
+git commit -m "First commit!"
+git push -u origin master
+```
+
+##### Contributing
+If you feel like you want to help this project by adding something you think useful, you can make your pull request against the master branch :)
+
 ### Questions & Answers
 
 #### Why the `/app/shared/` symlink stuff for uploads?
