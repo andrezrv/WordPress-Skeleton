@@ -1,21 +1,16 @@
-# We don't want to share our static files
-/app/shared/*
-# But we need to have the shared folder and its subfolders existing,
-# avoiding the need to create them manually when we clone the repo
-!/app/shared/index.php
-!/app/shared/content/index.php
-!/app/shared/content/uploads/index.php
+# Stuff that pops up locally for me - @andrezrv
+*.sublime*
+.DS_Store
 
-# We don't want to share our local config file
+# No need to share our static files
+/app/shared/*
+
+# No need to share our local config file
 /app/local-config.php
+
+# And no need to share individual SQL files with each other
+*.sql
+*.sql.gz
 
 # Avoid the automatically generated upgrade folder to reach the repo
 /app/content/upgrade/
-
-# Exclude any other automatically generated or hidden file
-.*
-# But include Git files
-!/.git
-!/.git*
-# And include our sample .htaccess
-!/app/.htaccess
