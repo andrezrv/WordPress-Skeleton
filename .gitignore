@@ -3,7 +3,8 @@
 # But we need to have the shared folder and its subfolders existing,
 # avoiding the need to create them manually when we clone the repo
 !/app/shared/index.php
-!/app/shared/*/index.php
+!/app/shared/content/index.php
+!/app/shared/content/uploads/index.php
 
 # We don't want to share our local config file
 /app/local-config.php
@@ -14,8 +15,7 @@
 # Exclude any other automatically generated or hidden file
 .*
 # But include Git files
-!.git
-!.git*
+!/.git
+!/.git*
 # And include our sample .htaccess
 !/app/.htaccess
-
