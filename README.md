@@ -38,7 +38,7 @@ This is for people using [Memcached](http://wordpress.org/plugins/memcached/) as
 If you are using [WP-Stack](http://github.com/markjaquith/WP-Stack) or [Stage WP](http://github.com/andrezrv/stage-wp) as your deployment script, in the moment you fire your deploy process, both of these tools will automatically set the database values to the ones you defined in their configuration files, so you should never write them down on `wp-config.php`. Otherwise, you should write your own deployment script to do so, or add `wp-config.php` to your `.gitignore` file to avoid sending your credentials to your remote repo.
 
 #### How do I activate the backup tasks?
-Copy `/app/tasks/config.example.cfg` to `/app/tasks/config.cfg`, fill it with your custom values and run `bash add-to-bin.sh`. That will give you the following terminal commands:
+Copy `/app/tasks/config-sample.sh` to `/app/tasks/config.sh`, fill it with your custom values and run `bash add-to-bin.sh`. That will give you the following terminal commands:
 
 * `${website}-backup-application`: saves a copy of your website files into your desired location. You should add its path to your `.gitignore` if you are saving the files inside the repo's folder.
 * `${website}-backup-database`: saves a copy of your database into your desired location. As with the former task, you should add its path to your `.gitignore` if you are saving the files inside the repo's folder.

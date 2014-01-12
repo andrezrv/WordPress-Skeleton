@@ -14,3 +14,6 @@
 
 # Avoid the automatically generated upgrade folder to reach the repo
 /app/content/upgrade/
+
+# No need to share custom local backups
+/backups/*
