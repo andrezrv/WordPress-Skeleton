@@ -2,6 +2,8 @@
 
 This is simply a model repo for a WordPress site, originally forked from Mark Jaquith's [WordPress-Skeleton](https://github.com/markjaquith/WordPress-Skeleton). It also provides a maintenance version of your site which you can switch to when you need your WordPress to go offline, and a Bash library containing common backup tasks for your files and database. Use it to jump-start your WordPress site repos, or fork it and customize it to your own liking!
 
+**Current stable version**: [1.0](https://github.com/andrezrv/wordpress-bareboner/tree/1.0)
+
 ### What's different from a default WordPress installation?
 
 * WordPress is included as a Git submodule in `/app/wordpress/`.
