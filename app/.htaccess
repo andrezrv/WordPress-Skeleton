@@ -1,5 +1,7 @@
-# This is an example .htaccess file. It will only be used if you use Apache as
-# your web server. Feel free to customize it according to your own needs.
+# This is an example .htaccess file. Feel free to customize it according to
+# your own needs. Keep in mind that it will only be used if you run Apache as
+# your webserver, and you should remove it if you are using another webserver,
+# such as nginx, in order to avoid confussions. 
 
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
