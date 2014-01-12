@@ -1,6 +1,21 @@
-/app/shared
+# We don't want to share our static files
+/app/shared/*
+# But we need to have the shared folder and its subfolders existing,
+# avoiding the need to create them manually when we clone the repo
+!/app/shared/index.php
+!/app/shared/*/index.php
+
+# We don't want to share our local config file
 /app/local-config.php
-/app/sql-dump-*.sql
-/app/db-sync
+
+# Avoid the automatically generated upgrade folder to reach the repo
 /app/content/upgrade/
-.DS_Store
+
+# Exclude any other automatically generated or hidden file
+.*
+# But include Git files
+!.git
+!.git*
+# And include our sample .htaccess
+!/app/.htaccess
+
