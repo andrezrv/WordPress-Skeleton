@@ -3,7 +3,7 @@
 .DS_Store
 
 # No need to share our static files
-# /app/shared/*
+/app/shared/*
 
 # No need to share our local config file
 /app/local-config.php
