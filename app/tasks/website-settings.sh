@@ -12,10 +12,10 @@ CONFIG=$THIS_DIR/config.sh
 # Default settings
 
 # // Full path to your application's website
-APPLICATION_WEBSITE_PATH=$PROJECT_PATH/live
+APPLICATION_WEBSITE_PATH=$APPLICATION_PATH/live
 # // Full path to your application's maintenance version
-APPLICATION_MAINTENANCE_PATH=$PROJECT_PATH/background
+APPLICATION_MAINTENANCE_PATH=$APPLICATION_PATH/background
 # // Full path to a transitional folder to be applied on maintenance tasks
-APPLICATION_TRANSITIONAL_PATH=$PROJECT_PATH/transition
+APPLICATION_TRANSITIONAL_PATH=$APPLICATION_PATH/transition
 # // Timestamp
 DATE=$(date +"%Y%m%d%H%M")
