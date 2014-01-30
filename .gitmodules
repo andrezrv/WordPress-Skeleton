@@ -4,6 +4,3 @@
 [submodule "app/tasks"]
 	path = app/tasks
 	url = git://github.com/andrezrv/common-backup-tasks
-[submodule "app/maintenance"]
-	path = app/maintenance
-	url = git://github.com/andrezrv/simple-maintenance-website
