@@ -17,4 +17,4 @@ fi
 # Backup your files to your selected folder using zip.
 sudo zip --symlinks -r $APPLICATION_BACKUP_PATH\/$DATE\.zip $APPLICATION_PATH
 # Clean backup directory.
-cd $BACKUP_PATH; (ls -t|head -n $APPLICATION_MAX_BACKUPS;ls)|sort|uniq -u|xargs rm
+cd $APPLICATION_BACKUP_PATH; (ls -t|head -n $APPLICATION_MAX_BACKUPS;ls)|sort|uniq -u|xargs rm
