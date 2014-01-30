@@ -17,3 +17,6 @@
 
 # No need to share custom local backups
 /backups/*
+
+# This is gonna have sensitive information about the database setup
+/tasks/config.sh
