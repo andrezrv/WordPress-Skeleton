@@ -1,0 +1,6 @@
+# WP CLI configuration file.
+#
+# If you're going to use WP CLI, copy this file to wp-cli.yml and customize it
+# to your own needs.  
+path: %%PATH%%
+url: %%URL%%
