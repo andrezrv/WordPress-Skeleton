@@ -9,8 +9,6 @@ THIS_DIR=$(dirname "$(readlink -fn "$0")")
 SETTINGS=$THIS_DIR/website-settings.sh
 . $SETTINGS
 
-echo $APPLICATION_PATH
-
 # Create backup directory if it doesn't exist.
 if [ ! -d $APPLICATION_BACKUP_PATH ]; then
   sudo mkdir -p $APPLICATION_BACKUP_PATH
