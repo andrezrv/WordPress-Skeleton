@@ -174,24 +174,24 @@ if ( file_exists( WP_CONTENT_DIR . '/advanced-cache.php' ) ) {
 define( 'WPCOM_API_KEY', '' );
 
 /**
- * WP-Stack CDN domain.
+ * Stage WP CDN domain.
  *
- * If you're using WP-Stack and the WP-Stack CDN plugin, then you need to set
+ * If you're using Stage WP and the Stage WP CDN plugin, then you need to set
  * your CDN domain here to get it to work. By default it will be your site's
  * domain, so nothing will break, but don't forget to change it if you have a
  * custom CDN domain.
  */
-define( 'WP_STACK_CDN_DOMAIN', $_SERVER['HTTP_HOST'] );
+define( 'STAGE_WP_CDN_DOMAIN', '%%STAGE_WP_CDN_DOMAIN%%' );
 
 /**
- * WP-Stack stage settings.
+ * Stage WP settings.
  *
  * The following constants will be programatically set when deploying with 
- * WP-Stack, so your WP-Stack plugins can know which environment your site is in
+ * Stage WP, so your Stage WP plugins can know which environment your site is in
  * (e.g. production, staging).
  */
 define( 'WP_STAGE', '%%WP_STAGE%%' );
-define( 'STAGING_DOMAIN', '%%WP_STAGING_DOMAIN%%' ); // Does magic in WP Stack to handle staging domain rewriting
+define( 'STAGING_DOMAIN', '%%WP_STAGING_DOMAIN%%' ); // Does magic in Stage WP to handle staging domain rewriting
 
 /* That's all, stop editing! Happy blogging. */
 
