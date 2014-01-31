@@ -20,8 +20,8 @@
  * Version: 1.0
  * License: GPL2
  */
-if (   ( defined( 'JETPACK_DEV_DEBUG' ) && true === JETPACK_DEV_DEBUG )
-	|| ( defined( 'WP_LOCAL_DEV' ) && true === WP_LOCAL_DEV ) 
+if (   ( !defined( 'JETPACK_DEV_DEBUG' ) )
+	&& ( defined( 'WP_LOCAL_DEV' ) && true === WP_LOCAL_DEV ) 
 ) {
 	add_filter( 'jetpack_development_mode', '__return_true' );
 }
