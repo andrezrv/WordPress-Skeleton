@@ -9,14 +9,13 @@ This is simply a model repo for a WordPress site, originally forked from Mark Ja
 * WordPress is included as a Git submodule in `/app/wordpress/`. Keep in mind that you can't include any non-core files here.
 * You're gonna be using a custom content directory in `/app/content/` (cleaner, and also because it can't be in `/app/wordpress/`).
 * Your `wp-config.php` file is in `/app/` (because it can't be in `/app/wordpress/`).
-* If you're using WP-CLI, your `wp-cli.yml` file will be in `/app/`, because of the former reasons.
 * All writable directories are symlinked to similarly named locations under `/shared/`.
 
 All of these changes will significantly improve your WordPress core update process, since you're not gonna be able to overwrite or delete your content accidentally when updating. It's also a cleaner way to mantain your custom files (themes, plugins and static assets) separated from the core, because you can easily move them to any other installation or version of WordPress without dealing with any core files that could be on your way.
 
 ### Assumptions
 
-* You are developing and staging against Unix systems. Windows is not supported, since this projects contains symlinks and Bash tasks that will not work there. For local development, you may want to consider using [Vagrant](http://www.vagrantup.com/) and [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV).
+* You are developing and staging against Unix systems. Windows is not supported, since this project contains symlinks and Bash tasks that will not work there. For local development, you may want to consider using [Vagrant](http://www.vagrantup.com/) and [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV).
 * You have a symlink called `/live` that points either to `/app/` or `/app/wordpress/` (the later is the default path).
 * You have a symlink called `/background` that points to `/app/maintenance/`.
 * You are pointing the root of your host in your NGINX or Apache configuration to `/live`, as you can see in `/app/nginx-sample.conf`.
