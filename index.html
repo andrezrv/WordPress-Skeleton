@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Wordpress Bareboner by andrezrv</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Wordpress Bareboner</h1>
+        <p>A basic layout of a WordPress Git repository, meant to be used as a base for new projects.</p>
+
+        <p class="view"><a href="https://github.com/andrezrv/wordpress-bareboner">View the Project on GitHub <small>andrezrv/wordpress-bareboner</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/andrezrv/wordpress-bareboner/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/andrezrv/wordpress-bareboner/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/andrezrv/wordpress-bareboner">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><strong>A model repo for a version-agnostic WordPress site. It also provides a maintenance version of your site which you can switch to when you need your WordPress instance to go offline, and a Bash library containing common backup tasks for your files and database. Use it to jump-start your WordPress site repos, or fork it and customize it to your own liking!</strong></p>
+
+<p><strong>Current stable version</strong>: <a href="https://github.com/andrezrv/wordpress-bareboner/tree/1.1">1.1</a></p>
+
+<h3>
+<a name="whats-different-from-a-default-wordpress-installation" class="anchor" href="#whats-different-from-a-default-wordpress-installation"><span class="octicon octicon-link"></span></a>What's different from a default WordPress installation?</h3>
+
+<ul>
+<li>WordPress is included as a Git submodule in <code>/app/wordpress/</code>. Keep in mind that you can't include any non-core files here.</li>
+<li>You're gonna be using a custom content directory in <code>/app/content/</code> (cleaner, and also because it can't be in <code>/app/wordpress/</code>).</li>
+<li>Your <code>wp-config.php</code> file is in <code>/app/</code> (because it can't be in <code>/app/wordpress/</code>).</li>
+<li>All writable directories are symlinked to similarly named locations under <code>/shared/</code>.</li>
+</ul><p>All of these changes will significantly improve your WordPress core update process, since you're not gonna be able to overwrite or delete your content accidentally when updating. It's also a cleaner way to mantain your custom files (themes, plugins and static assets) separated from the core, because you can easily move them to any other installation or version of WordPress without dealing with any core files that could be on your way.</p>
+
+<h3>
+<a name="assumptions" class="anchor" href="#assumptions"><span class="octicon octicon-link"></span></a>Assumptions</h3>
+
+<ul>
+<li>You are developing and staging against Unix systems. Windows is not supported, since this project contains symlinks and Bash tasks that will not work there. For local development, you may want to consider using <a href="http://www.vagrantup.com/">Vagrant</a> and <a href="https://github.com/Varying-Vagrant-Vagrants/VVV">VVV</a>.</li>
+<li>You have a symlink called <code>/live</code> that points either to <code>/app/</code> or <code>/app/wordpress/</code> (the later is the default path).</li>
+<li>You have a symlink called <code>/background</code> that points to <code>/app/maintenance/</code>.</li>
+<li>You are pointing the root of your host in your NGINX or Apache configuration to <code>/live</code>, as you can see in <code>/app/nginx-sample.conf</code>.</li>
+</ul><h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>Getting started</h3>
+
+<h4>
+<a name="cloning" class="anchor" href="#cloning"><span class="octicon octicon-link"></span></a>Cloning</h4>
+
+<p>You must clone this repository recursively, because it includes WordPress as a Git submodule and you won't get all the files with a default clone. Just run the following command:</p>
+
+<div class="highlight highlight-bash"><pre>git clone --recursive git://github.com/andrezrv/wordpress-bareboner.git <span class="nv">$my_project</span> 
+</pre></div>
+
+<h4>
+<a name="wordpress-version" class="anchor" href="#wordpress-version"><span class="octicon octicon-link"></span></a>WordPress Version</h4>
+
+<p>This repo intends to always track the latest stable release. Please send a pull request if I fall behind.</p>
+
+<h4>
+<a name="uploads-management" class="anchor" href="#uploads-management"><span class="octicon octicon-link"></span></a>Uploads Management</h4>
+
+<p>For local development, <code>/app/shared/</code> will contain your static files, which will be ignored by Git, because probably you don't wish to have some of them outside your development stage. For production and staging, you would need your deploy script (i.e some Capistrano-based library, such as <a href="http://github.com/andrezrv/stage-wp">Stage WP</a>, ) or <a href="http://github.com/markjaquith/WP-Stack">WP-Stack</a>) to look for symlinks pointing to <code>/shared/</code> and repoint them to some location outside the repo. This gives you separation between Git-managed code and uploaded files. However, if you're using <a href="http://github.com/andrezrv/stage-wp">Stage WP</a>, it provides tasks that can help you deploy your static files in separated processes.</p>
+
+<h4>
+<a name="local-configuration" class="anchor" href="#local-configuration"><span class="octicon octicon-link"></span></a>Local Configuration</h4>
+
+<p>For local development, copy <code>local-config-sample.php</code> to <code>local-config.php</code> and configure your settings there. Locally, you may need to have different MySQL credentials or do things like enable query saving or debug mode. This file is ignored by Git, so it doesn't accidentally get checked in. If the file does not exist (which it shouldn't, both in production and staging), then WordPress will use the database credentials defined in <code>wp-config.php</code>.</p>
+
+<h4>
+<a name="production--staging-configuration" class="anchor" href="#production--staging-configuration"><span class="octicon octicon-link"></span></a>Production &amp; Staging Configuration</h4>
+
+<p>For production, copy <code>production-config-sample.php</code> to <code>production-config.php</code>; for staging, copy <code>staging-config-sample.php</code> to <code>staging-config.php</code>. Those file should contain settings that you only want to be active on each environment. <code>production-config.php</code> should not exist on your staging environment. To achieve this, since the file is not ignored by Git, you need to ignore it in your deploy script, or remove it from your staging server before finishing deployment.</p>
+
+<h4>
+<a name="using-cache" class="anchor" href="#using-cache"><span class="octicon octicon-link"></span></a>Using Cache</h4>
+
+<p>If you want to use <a href="http://wordpress.org/plugins/memcached/">Memcached</a> as an object cache backend, or any other cache plugin or method that you need to configure within a file, such as <a href="http://wordpress.org/plugins/apc/">APC</a> or <a href="http://wordpress.org/plugins/batcache/">Batcache</a>, copy <code>cache-config-sample.php</code> to <code>cache-config.php</code>. The included code works only for Batcache, but you can modify it as you need. For memcached, it should be something like: <code>&lt;?php return array( "server01:11211", "server02:11211" ); ?&gt;</code>.</p>
+
+<h4>
+<a name="using-wp-cli" class="anchor" href="#using-wp-cli"><span class="octicon octicon-link"></span></a>Using WP-CLI</h4>
+
+<p>If you're using <a href="http://wp-cli.org/">WP-CLI</a> (and if not, you really should), just copy <code>wp-cli-sample.yml</code> and <code>wp-cli.yml</code> and adjust it to your own needs. Be sure to point <code>path</code> to <code>/app/wordpress/</code>, since this file can't be into <code>/app/wordpress/</code>.</p>
+
+<h4>
+<a name="database-settings-in-wp-configphp" class="anchor" href="#database-settings-in-wp-configphp"><span class="octicon octicon-link"></span></a>Database Settings in <code>wp-config.php</code>
+</h4>
+
+<p>If you are using <a href="http://github.com/markjaquith/WP-Stack">WP-Stack</a> or <a href="http://github.com/andrezrv/stage-wp">Stage WP</a> as your deployment script, in the moment you fire your deploy process, both of these tools will automatically set the database values to the ones you defined in their configuration files, so you should never write them down on <code>wp-config.php</code>. Otherwise, you should write your own deployment script to do so, or add <code>wp-config.php</code> to your <code>.gitignore</code> file to avoid sending your credentials to your remote repo.</p>
+
+<h4>
+<a name="using-maintenance-mode--backup-tasks" class="anchor" href="#using-maintenance-mode--backup-tasks"><span class="octicon octicon-link"></span></a>Using Maintenance Mode &amp; Backup Tasks</h4>
+
+<p>Copy <code>/app/tasks/config-sample.sh</code> to <code>/app/tasks/config.sh</code>, fill it with your custom values and run <code>bash add-to-bin.sh</code>. That will give you the following terminal commands:</p>
+
+<ul>
+<li>
+<code>${your_prefix}-backup-application</code>: saves a copy of your website files into your desired location. You should add its path to your <code>.gitignore</code> if you are saving the files inside the repo's folder.</li>
+<li>
+<code>${your_prefix}-backup-database</code>: saves a copy of your database into your desired location. As with the former task, you should add its path to your <code>.gitignore</code> if you are saving the files inside the repo's folder.</li>
+<li>
+<code>${your_prefix}-switch</code>: switches your website from active to maintenance state and vice versa, by switching symlinks to your site's root.</li>
+<li>
+<code>${your_prefix}-full-backup</code>: puts your website in maintenance state, then performs a full backup of database and files, and puts your site in active state again.</li>
+</ul><h4>
+<a name="support-for-multisite-mode" class="anchor" href="#support-for-multisite-mode"><span class="octicon octicon-link"></span></a>Support For Multisite Mode</h4>
+
+<p>WordPress fully supports Mulstise Mode since WordPress 3.5. Earlier versions of WordPress don't support Multisite when WordPress is in a subdirectory, but if your site is not the case, you should not have problems with older versions.</p>
+
+<h3>
+<a name="must-use-plugins" class="anchor" href="#must-use-plugins"><span class="octicon octicon-link"></span></a>Must Use Plugins</h3>
+
+<p>WordPress Must Use plugins, typically included in <code>mu-plugins</code> folder, are plugins that don't need to be activated and will work just because of being there. WordPress Bareboner includes some of those plugins:</p>
+
+<h4>
+<a name="recover-default-theme-directory" class="anchor" href="#recover-default-theme-directory"><span class="octicon octicon-link"></span></a>Recover Default Theme Directory</h4>
+
+<p>For installations with a custom content directory, it registers again the default one, located in <code>wp-content/themes</code>, so you can use the default themes pre-installed in every WordPress release. Original credits go to <a href="https://github.com/markjaquith/WordPress-Skeleton">Mark Jaquith</a>.</p>
+
+<h4>
+<a name="jetpack-development-mode" class="anchor" href="#jetpack-development-mode"><span class="octicon octicon-link"></span></a>Jetpack Development Mode</h4>
+
+<p>If you're using <a href="http://jetpack.me/">Jetpack</a> and have not defined the <code>JETPACK_DEV_DEBUG</code> constant, this plugin will automatically set Jetpack to <a href="http://jetpack.me/support/development-mode/">Development Mode</a> for your local stage.</p>
+
+<h4>
+<a name="jetpack-modules-deactivator" class="anchor" href="#jetpack-modules-deactivator"><span class="octicon octicon-link"></span></a>Jetpack Modules Deactivator</h4>
+
+<p>By default, upon its installation, <a href="http://jetpack.me/">Jetpack</a> will activate a lot of modules that may go from being a little annoying to add a lot of overhead to your site loading speed. This plugin will set the status of all the Jetpack modules upon installation to deactivated by default.</p>
+
+<h3>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h3>
+
+<p>If you feel like you want to help this project by adding something you think useful, you can make your pull request against the master branch :)</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/andrezrv">andrezrv</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
