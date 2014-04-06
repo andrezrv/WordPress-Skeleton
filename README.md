@@ -26,7 +26,7 @@ All of these changes will significantly improve your WordPress core update proce
 You must clone this repository recursively, because it includes WordPress as a Git submodule and you won't get all the files with a default clone. Just run the following command:
 
 ```bash
-git clone --recursive git://github.com/andrezrv/wordpress-bareboner.git $my_project 
+git clone --recursive git://github.com/andrezrv/wordpress-bareboner.git $my_project
 ```
 #### WordPress Version
 This repo intends to always track the latest stable release. Please send a pull request if I fall behind.
@@ -49,13 +49,8 @@ If you're using [WP-CLI](http://wp-cli.org/) (and if not, you really should), ju
 #### Database Settings in `wp-config.php`
 If you are using [WP-Stack](http://github.com/markjaquith/WP-Stack) or [Stage WP](http://github.com/andrezrv/stage-wp) as your deployment script, in the moment you fire your deploy process, both of these tools will automatically set the database values to the ones you defined in their configuration files, so you should never write them down on `wp-config.php`. Otherwise, you should write your own deployment script to do so, or add `wp-config.php` to your `.gitignore` file to avoid sending your credentials to your remote repo.
 
-#### Using Maintenance Mode & Backup Tasks
-Copy `/app/tasks/config-sample.sh` to `/app/tasks/config.sh`, fill it with your custom values and run `bash add-to-bin.sh`. That will give you the following terminal commands:
-
-* `${your_prefix}-backup-application`: saves a copy of your website files into your desired location. You should add its path to your `.gitignore` if you are saving the files inside the repo's folder.
-* `${your_prefix}-backup-database`: saves a copy of your database into your desired location. As with the former task, you should add its path to your `.gitignore` if you are saving the files inside the repo's folder.
-* `${your_prefix}-switch`: switches your website from active to maintenance state and vice versa, by switching symlinks to your site's root.
-* `${your_prefix}-full-backup`: puts your website in maintenance state, then performs a full backup of database and files, and puts your site in active state again.
+#### Using Maintenance Mode
+Just repoint the root of your NGINX server to `{path_to_this_repo}/maintenance`.
 
 #### Support For Multisite Mode
 WordPress fully supports Mulstise Mode since WordPress 3.5. Earlier versions of WordPress don't support Multisite when WordPress is in a subdirectory, but if your site is not the case, you should not have problems with older versions.
