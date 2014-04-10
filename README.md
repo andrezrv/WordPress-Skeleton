@@ -52,6 +52,9 @@ If you are using [WP-Stack](http://github.com/markjaquith/WP-Stack) or [Stage WP
 #### Using Maintenance Mode
 Just repoint the root of your NGINX server to `{path_to_this_repo}/maintenance`.
 
+#### Support for [Varying Vagrant Vagrants](https://github.com/Varying-Vagrant-Vagrants/VVV)
+Edit the files inside the `vvv` folder so your site can load automatically upon `vagrant up`.
+
 #### Support For Multisite Mode
 WordPress fully supports Mulstise Mode since WordPress 3.5. Earlier versions of WordPress don't support Multisite when WordPress is in a subdirectory, but if your site is not the case, you should not have problems with older versions.
 
