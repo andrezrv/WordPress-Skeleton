@@ -17,7 +17,6 @@ All of these changes will significantly improve your WordPress core update proce
 
 * You are developing and staging against Unix systems. Windows is not supported, since this project contains symlinks and Bash tasks that will not work there. For local development, you may want to consider using [Vagrant](http://www.vagrantup.com/) and [VVV](https://github.com/Varying-Vagrant-Vagrants/VVV).
 * You have a symlink called `/live` that points either to `/app/` or `/app/wordpress/` (the later is the default path).
-* You have a symlink called `/background` that points to `/app/maintenance/`.
 * You are pointing the root of your host in your NGINX or Apache configuration to `/live`, as you can see in `/app/nginx-sample.conf`.
 
 ### Getting started
